@@ -1,16 +1,10 @@
-﻿[System.Serializable]
-public class Command : Action
+﻿using UnityEngine;
+
+[System.Serializable]
+public class Command
 {
-    public long maxStacks;
-
-    public Command()
-    {
-        this.id = "-1";
-    }
-
-    public override void Use(Delegate Method)
-    {
-        if (Method == null) return;
-        Method();
-    }
+    public string id;
+    public Vector3 position;
+    public string titulo;
+    public string descrição;
 }
