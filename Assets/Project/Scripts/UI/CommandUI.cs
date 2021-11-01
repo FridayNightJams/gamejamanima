@@ -6,39 +6,28 @@ using TMPro;
 
 public class CommandUI : MonoBehaviour
 {
-    [SerializeField] private Command command;
-    [SerializeField] private Action.Delegate methodCast;
+    protected Command command;
+    [SerializeField] private TextMeshProUGUI titulo;
+    [SerializeField] private TextMeshProUGUI descricao;
+    [SerializeField] private Button remover;
 
-    [Header("UI")]
-    [SerializeField] private TextMeshProUGUI title;
-
-    public void Use()
+    private void Start()
     {
-        if (command.methodCast == null) return;
-        command.Use(methodCast);
+        remover.onClick.AddListener(() => RemoverCmd());
+        remover.gameObject.SetActive(!GameManager.Instance().IsPlaying());
     }
 
-    public void SetCommand(Command value)
+    public void Criar(Command cmd)
     {
-        title.text = "";
-
-        if (value.id.Equals("-1")) return;
-
-        command = CommandData.Instance().Find(value.id);
-
-        title.text = value.description;
-
-        if (command.methodCast.Equals("")) return;
-        this.gameObject.AddComponent(Type.GetType(command.methodCast));
+        command = cmd;
+        descricao.text = cmd.descrição;
+        if (titulo != null) titulo.text = cmd.titulo;
     }
 
-    public Command GetCommand()
+    private void RemoverCmd()
     {
-        return command;
+        CommandData.Instance().GetBuild().Remove(command);
+        Destroy(gameObject);
     }
 
-    public void SetMethodCast(Action.Delegate cast)
-    {
-        this.methodCast = cast;
-    }
 }
