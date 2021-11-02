@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private string mapa;
     [SerializeField] private Button playButton;
     [SerializeField] private Button pauseButton;
     [SerializeField] private Animator programPanelAnim;
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
     {
         playButton.onClick.AddListener(() => Play());
         pauseButton.onClick.AddListener(() => Pause());
+
+        if (CommandData.Instance().GetBuild().Count <= 0) isPlaying = false;
     }
 
     private void Update()
@@ -44,12 +47,12 @@ public class GameManager : MonoBehaviour
     private void Play()
     {
         isPlaying = true;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(mapa);
     }
     private void Pause()
     {
         isPlaying = false;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(mapa);
     }
 
     public bool IsPlaying()

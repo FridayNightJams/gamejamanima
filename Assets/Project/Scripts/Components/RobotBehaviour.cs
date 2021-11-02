@@ -6,6 +6,7 @@ public class RobotBehaviour : MonoBehaviour
 {
     [SerializeField] public bool isTentaPegarLixo;
     [SerializeField] public bool isSoltaLixo;
+    [SerializeField] private Transform bloqueio;
     [SerializeField] public Transform lixoPrefab;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject playerModel;
@@ -69,6 +70,7 @@ public class RobotBehaviour : MonoBehaviour
         {
             lixoPrefab.gameObject.SetActive(false);
             isSoltaLixo = false;
+            if(bloqueio) bloqueio.gameObject.SetActive(false);
         }
     }
 

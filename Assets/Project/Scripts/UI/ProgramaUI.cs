@@ -31,7 +31,7 @@ public class ProgramaUI : MonoBehaviour
     private void CriarBuild()
     {
         ClearContent();
-        GameObject prefab = new GameObject();
+        GameObject prefab = null;
         foreach (Command c in CommandData.Instance().GetBuild())
         {
             prefab = commandPrefab;
