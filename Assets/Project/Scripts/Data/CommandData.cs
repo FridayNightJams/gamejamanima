@@ -53,7 +53,7 @@ public class CommandData : MonoBehaviour
         m2.id = "MoverEsquerda";
         m2.position = new Vector3(-1, 0, 0);
         m2.descricao = "<color=green>MoverEsquerda();</color>";
-        m2.direcao = new Quaternion(0, 180, 0, 90);
+        m2.direcao = new Quaternion(0, -90, 0, 90);
         commands.Add(m2);
 
         Command m3 = new Command();
@@ -67,7 +67,7 @@ public class CommandData : MonoBehaviour
         m4.id = "MoverBaixo";
         m4.position = new Vector3(0, 0, -1);
         m4.descricao = "<color=green>MoverBaixo();</color>";
-        m4.direcao = new Quaternion(0, 210, 0, 90);
+        m4.direcao = new Quaternion(0, 180, 0, 90);
         commands.Add(m4);
 
         Command i1 = new Command();

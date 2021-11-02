@@ -16,7 +16,7 @@ public class RobotBehaviour : MonoBehaviour
         {
             foreach (Command c in CommandData.Instance().GetBuild())
             {
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(1);
                 if (c.id.Contains("Mover")) Mover(c.position, c.direcao);
                 if (c.id.Equals("Pegar")) PegarLixo();
                 if (c.id.Equals("Soltar")) SoltarLixo();
@@ -29,8 +29,11 @@ public class RobotBehaviour : MonoBehaviour
     {
         isTentaPegarLixo = false;
         transform.position += pos;
-        playerModel.transform.localRotation = new Quaternion(playerModel.transform.localRotation.x, rot.y, playerModel.transform.localRotation.z, rot.w);
-        Debug.Log("Mover");
+        transform.eulerAngles = new Vector3(
+            transform.eulerAngles.x,
+            rot.y,
+            transform.eulerAngles.z
+        );
         animator.SetBool("walking", true);
     }
 
