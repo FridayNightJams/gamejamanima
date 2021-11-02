@@ -20,7 +20,7 @@ public class CommandUI : MonoBehaviour
     public void Criar(Command cmd)
     {
         command = cmd;
-        descricao.text = cmd.descrição;
+        descricao.text = cmd.descricao;
         if (titulo != null) titulo.text = cmd.titulo;
     }
 
